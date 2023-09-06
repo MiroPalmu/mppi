@@ -1,7 +1,7 @@
 project(
-    'meson_template',
+    'mppi',
     'cpp',
-    default_options : ['warning_level=3', 'werror=true', 'optimization=3', 'cpp_std=c++17']
+    default_options : ['warning_level=3', 'werror=true', 'optimization=3', 'cpp_std=c++23']
 )
 
 
@@ -12,7 +12,10 @@ project_include_directories += include_directories('include')
 # Subprojects (using meson wraps)
 ut = subproject('ut')
 
-project_dependencies = [dependency('ut')]
+project_dependencies = [
+  dependency('ut'),
+  dependency('mpi')
+]
 
 # Project sources
 project_sources = []
@@ -22,10 +25,3 @@ subdir('docs')
 subdir('include')
 subdir('src')
 subdir('tests')
-
-executable(
-    'temp_executable',
-    project_sources,
-    include_directories : project_include_directories,
-    dependencies : project_dependencies
-)
