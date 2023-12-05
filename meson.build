@@ -1,6 +1,6 @@
 project(
     'mppi',
-    'cpp',
+    ['c', 'cpp'],
     default_options : ['warning_level=3', 'werror=true', 'optimization=3', 'cpp_std=c++23']
 )
 
